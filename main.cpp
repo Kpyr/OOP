@@ -7,7 +7,7 @@ int main() {
   ///Тест update from VS
   cout << "Hello, World!" << endl;
   cout << "Lb2!";
-
+  cout << "lol";
 
   return 0;
 }
