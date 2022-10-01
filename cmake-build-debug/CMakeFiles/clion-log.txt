@@ -1,4 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2022.1.2/bin/ninja/win/ninja.exe" -G Ninja -S D:\Clion_Projects\OOP_Lab1 -B D:\Clion_Projects\OOP_Lab1\cmake-build-debug
+"C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - NMake Makefiles" -S D:\Clion_Projects\Clion_test_v2 -B D:\Clion_Projects\Clion_test_v2\cmake-build-debug
 -- The C compiler identification is MSVC 19.32.31329.0
 -- The CXX compiler identification is MSVC 19.32.31329.0
 -- Detecting C compiler ABI info
@@ -13,4 +13,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: D:/Clion_Projects/OOP_Lab1/cmake-build-debug
+-- Build files have been written to: D:/Clion_Projects/Clion_test_v2/cmake-build-debug
