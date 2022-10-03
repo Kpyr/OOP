@@ -6,22 +6,22 @@ class Body {
 
  public:
   double V = 0, S = 0, num_PI = 3.14;
-  virtual double V_find(double temp1,double temp2){
+  virtual double V_find(double *arr){
       return 0;
   };
-  virtual double S_find(double temp1, double temp2, double temp3){
+  virtual double S_find(double *arr){
       return 0;
   };
 };
 
 class Parallelepiped : public Body {
  public:
-  double V_find(double length, double width, double height) {
-    V = length * width * height;
+  double V_find(double *arr) {
+    V = arr[0]*arr[1]*arr[2];
     return V;
   }
-  double S_find(double length, double width, double height) {
-    S = 2 * (length * width + length * height + width * height);
+  double S_find(double *arr) {
+    S = 2 * (arr[0]*arr[1] + arr[0]*arr[2] + arr[1]*arr[2]);
     return S;
   }
 };
@@ -78,7 +78,9 @@ int main() {
 	list[0] = pram; list[1] = conus; list[2] = shar;
 	double temp1, temp2, temp3;
 	cin >> temp1 >> temp2 >> temp3;
-    double ans = list[1]->V_find(temp1,temp2);
+    double arr[3]{};
+    for (int i = 0; i < 3; i++) cin >> arr[i];
+    double ans = list[0]->V_find(arr);
     cout << ans;
  
   
