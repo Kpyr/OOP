@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "D:/Clion_Projects/Clion_test_v2/main.cpp" "CMakeFiles/OOP_Lab1.dir/main.cpp.obj" "msvc" "CMakeFiles/OOP_Lab1.dir/main.cpp.obj.d"
+  "D:/Clion_Projects/OOP/main.cpp" "CMakeFiles/OOP_Lab1.dir/main.cpp.obj" "msvc" "CMakeFiles/OOP_Lab1.dir/main.cpp.obj.d"
   )
 
 # Targets to which this target links.
