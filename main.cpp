@@ -8,10 +8,7 @@
 // Кузьменко Кирилл Сергеевич
 // 03.10.2022
 //--------------------------------------------------------
-
-
 #pragma once
-
 //#include <vld.h>
 #include <stack>
 #include <memory>
@@ -20,18 +17,15 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-
-
-
 class Body {
  protected:
   double V = 0, S = 0, num_PI = 3.14;
  public:
-
-  virtual double V_find(double* arr) {
+  Body(){};
+  virtual double V_find(double* arr) {   ///База
     return 0;
   };
-  virtual double S_find(double* arr) {
+  virtual double S_find(double* arr) {  ///База
     return 0;
   };
   ~Body() {};
@@ -39,39 +33,44 @@ class Body {
 
 class Parallelepiped : public Body {
  public:
-  double V_find(double* arr) {
-    V = arr[0] * arr[1] * arr[2];
-    return V;
+  Parallelepiped(){};
+  double V_find(double* arr) {          ///Переопределение виртуальной функции
+    V = arr[0] * arr[1] * arr[2];       ///для производного класса Parallelepiped
+    return V;                           ///которая вычисляет Объем паралелепипеда
   }
-  double S_find(double* arr) {
-    S = 2 * (arr[0] * arr[1] + arr[0] * arr[2] + arr[1] * arr[2]);
-    return S;
+  double S_find(double* arr) {                                      ///Переопределение виртуальной функции
+    S = 2 * (arr[0] * arr[1] + arr[0] * arr[2] + arr[1] * arr[2]);  ///для производного класса Parallelepiped
+    return S;                                                       ///которая вычисляет Площадь паралелепипеда
   }
+  ~Parallelepiped(){};
 };
 
 class Cone : public Body {
  public:
-  double V_find(double* arr) {
-    V = (num_PI * arr[0] * arr[0] * arr[1]) / 3;
-    return V;
+  Cone(){};
+  double V_find(double* arr) {                    ///Переопределение виртуальной функции
+    V = (num_PI * arr[0] * arr[0] * arr[1]) / 3;  ///для производного класса Cone
+    return V;                                     ///которая вычисляет Объем конуса
   }
-  double S_find(double* arr) {
-    S = (num_PI * arr[0] * arr[1]) + (num_PI * arr[0] * arr[0]);
-    return S;
+  double S_find(double* arr) {                                    ///Переопределение виртуальной функции
+    S = (num_PI * arr[0] * arr[1]) + (num_PI * arr[0] * arr[0]);  ///для производного класса Cone
+    return S;                                                     ///которая вычисляет Площадь конуса
   }
-
+  ~Cone(){};
 };
 
 class Ball : public Body {
  public:
-  double V_find(double* arr) {
-    V = (num_PI * arr[0] * arr[0] * arr[0] * 4) / 3;
-    return V;
+  Ball(){};
+  double V_find(double* arr) {                        ///Переопределение виртуальной функции
+    V = (num_PI * arr[0] * arr[0] * arr[0] * 4) / 3;  ///для производного класса Ball
+    return V;                                         ///которая вычисляет Объем шара
   }
-  double S_find(double* arr) {
-    S = 4 * num_PI * arr[0] * arr[0];
-    return S;
+  double S_find(double* arr) {                        ///Переопределение виртуальной функции
+    S = 4 * num_PI * arr[0] * arr[0];                 ///для производного класса Ball
+    return S;                                         ///которая вычисляет площадь шара
   }
+  ~Ball(){};
 };
 
 int main() {
