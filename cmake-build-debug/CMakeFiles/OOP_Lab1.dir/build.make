@@ -42,10 +42,10 @@ RM = "C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\Clion_Projects\Clion_test_v2
+CMAKE_SOURCE_DIR = D:\Clion_Projects\OOP
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Clion_Projects\Clion_test_v2\cmake-build-debug
+CMAKE_BINARY_DIR = D:\Clion_Projects\OOP\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles\OOP_Lab1.dir\depend.make
@@ -61,21 +61,21 @@ include CMakeFiles\OOP_Lab1.dir\flags.make
 CMakeFiles\OOP_Lab1.dir\main.cpp.obj: CMakeFiles\OOP_Lab1.dir\flags.make
 CMakeFiles\OOP_Lab1.dir\main.cpp.obj: ..\main.cpp
 CMakeFiles\OOP_Lab1.dir\main.cpp.obj: CMakeFiles\OOP_Lab1.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Clion_Projects\Clion_test_v2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OOP_Lab1.dir/main.cpp.obj"
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\OOP_Lab1.dir\main.cpp.obj.d --working-dir=D:\Clion_Projects\Clion_test_v2\cmake-build-debug --filter-prefix="Примечание: включение файла:  " -- C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1432~1.313\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\OOP_Lab1.dir\main.cpp.obj /FdCMakeFiles\OOP_Lab1.dir\ /FS -c D:\Clion_Projects\Clion_test_v2\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Clion_Projects\OOP\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OOP_Lab1.dir/main.cpp.obj"
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\OOP_Lab1.dir\main.cpp.obj.d --working-dir=D:\Clion_Projects\OOP\cmake-build-debug --filter-prefix="Примечание: включение файла:  " -- C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1432~1.313\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\OOP_Lab1.dir\main.cpp.obj /FdCMakeFiles\OOP_Lab1.dir\ /FS -c D:\Clion_Projects\OOP\main.cpp
 <<
 
 CMakeFiles\OOP_Lab1.dir\main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OOP_Lab1.dir/main.cpp.i"
 	C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1432~1.313\bin\Hostx86\x86\cl.exe > CMakeFiles\OOP_Lab1.dir\main.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Clion_Projects\Clion_test_v2\main.cpp
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Clion_Projects\OOP\main.cpp
 <<
 
 CMakeFiles\OOP_Lab1.dir\main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OOP_Lab1.dir/main.cpp.s"
 	C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1432~1.313\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\OOP_Lab1.dir\main.cpp.s /c D:\Clion_Projects\Clion_test_v2\main.cpp
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\OOP_Lab1.dir\main.cpp.s /c D:\Clion_Projects\OOP\main.cpp
 <<
 
 # Object files for target OOP_Lab1
@@ -88,9 +88,9 @@ OOP_Lab1_EXTERNAL_OBJECTS =
 OOP_Lab1.exe: CMakeFiles\OOP_Lab1.dir\main.cpp.obj
 OOP_Lab1.exe: CMakeFiles\OOP_Lab1.dir\build.make
 OOP_Lab1.exe: CMakeFiles\OOP_Lab1.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Clion_Projects\Clion_test_v2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable OOP_Lab1.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Clion_Projects\OOP\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable OOP_Lab1.exe"
 	"C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\OOP_Lab1.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\mt.exe --manifests -- C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1432~1.313\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\OOP_Lab1.dir\objects1.rsp @<<
- /out:OOP_Lab1.exe /implib:OOP_Lab1.lib /pdb:D:\Clion_Projects\Clion_test_v2\cmake-build-debug\OOP_Lab1.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
+ /out:OOP_Lab1.exe /implib:OOP_Lab1.lib /pdb:D:\Clion_Projects\OOP\cmake-build-debug\OOP_Lab1.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<
 
 # Rule to build all files generated by this target.
@@ -102,6 +102,6 @@ CMakeFiles\OOP_Lab1.dir\clean:
 .PHONY : CMakeFiles\OOP_Lab1.dir\clean
 
 CMakeFiles\OOP_Lab1.dir\depend:
-	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" D:\Clion_Projects\Clion_test_v2 D:\Clion_Projects\Clion_test_v2 D:\Clion_Projects\Clion_test_v2\cmake-build-debug D:\Clion_Projects\Clion_test_v2\cmake-build-debug D:\Clion_Projects\Clion_test_v2\cmake-build-debug\CMakeFiles\OOP_Lab1.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" D:\Clion_Projects\OOP D:\Clion_Projects\OOP D:\Clion_Projects\OOP\cmake-build-debug D:\Clion_Projects\OOP\cmake-build-debug D:\Clion_Projects\OOP\cmake-build-debug\CMakeFiles\OOP_Lab1.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles\OOP_Lab1.dir\depend
 
