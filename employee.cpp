@@ -9,8 +9,27 @@ void changeSurname(struct employee* emp, string surnm){
   emp->surname = surnm;
 }
 
-void calcExperience(struct employee* emp, long ms[3]){
-
+long *calcExperience(struct employee* emp, long ms[3]){
+  unsigned long long bg = emp->expYear * 365 + (emp->expMonth-1) * 30 + emp->expDay;
+  unsigned long long ed = ms[2] * 365 + (ms[1]-1) * 30 + ms[0];
+  if(ed > bg) {
+    unsigned long long res = ed - bg;
+    //
+    static long tmpms[4];
+    tmpms[3] = res;
+    tmpms[2] = res / 365;
+    res -= tmpms[2] * 365;
+    //
+    tmpms[1] = res / 30;
+    //
+    res -= tmpms[1] * 30;
+    tmpms[0] = res;
+    return tmpms;
+  }
+  else{
+    static long tmpms[4]{0};
+    return tmpms;
+  }
 }
 
 void changeProfessionAndSpeciality(struct employee* emp, string newProf, string newSpec){
