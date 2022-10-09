@@ -1,197 +1,175 @@
-//--------------------------------------------------------
-// ИКТИБ ЮФУ
-// Кафедра МОП ЭВМ
-// ООП
-// Лабораторная работа №2, варант 4
-// КТбо2-8
-// Степочкин Михаил Андреевич
-// Кузьменко Кирилл Сергеевич
-// 03.10.2022
-//--------------------------------------------------------
-#pragma once
 //#include <vld.h>
-#include <stack>
-#include <memory>
-#include <sstream>
-#include "Windows.h"
 #include <iostream>
 #include <cmath>
+#include <Windows.h>
 using namespace std;
-class Body {
+class Point{
+ public:
+  float x=0, y=0;
+};
+class Shape{
  protected:
-  double V = 0, S = 0, num_PI = 3.14;
+
  public:
-  Body(){};
-  virtual double V_find(double* arr) {   ///База
-    return 0;
-  };
-  virtual double S_find(double* arr) {  ///База
-    return 0;
-  };
-  ~Body() {};
+  Point* arc = 0;
+  string ID="";
+  virtual ~Shape(){};
 };
 
-class Parallelepiped : public Body {
+class Triangle:public Shape{
  public:
-  Parallelepiped(){};
-  double V_find(double* arr) {          ///Переопределение виртуальной функции
-    V = arr[0] * arr[1] * arr[2];       ///для производного класса Parallelepiped
-    return V;                           ///которая вычисляет Объем паралелепипеда
+  Triangle(){
+    arc = new Point[3];
+    ID = "Triangle";
   }
-  double S_find(double* arr) {                                      ///Переопределение виртуальной функции
-    S = 2 * (arr[0] * arr[1] + arr[0] * arr[2] + arr[1] * arr[2]);  ///для производного класса Parallelepiped
-    return S;                                                       ///которая вычисляет Площадь паралелепипеда
-  }
-  ~Parallelepiped(){};
+  ~Triangle(){delete[] arc;}
 };
 
-class Cone : public Body {
+class Trapeze:public Shape{
  public:
-  Cone(){};
-  double V_find(double* arr) {                    ///Переопределение виртуальной функции
-    V = (num_PI * arr[0] * arr[0] * arr[1]) / 3;  ///для производного класса Cone
-    return V;                                     ///которая вычисляет Объем конуса
+  Trapeze(){
+    arc = new Point[4];
+    cout << "Введите координаты точек начиная с левого-нижнего угла против часовой стрелки" << endl;
+    for (int i = 0; i < 4; ++i) {
+      cout << "Введите координаты " << i+1 << " точки: ";
+      cout << "x = ";
+      cin >> arc[i].x;
+      cout << "y = ";
+      cin >> arc[i].y;
+    }
+    ID = "Trapeze";
   }
-  double S_find(double* arr) {                                    ///Переопределение виртуальной функции
-    S = (num_PI * arr[0] * arr[1]) + (num_PI * arr[0] * arr[0]);  ///для производного класса Cone
-    return S;                                                     ///которая вычисляет Площадь конуса
-  }
-  ~Cone(){};
+  ~Trapeze(){delete[] arc;}
 };
 
-class Ball : public Body {
+class Factory{
  public:
-  Ball(){};
-  double V_find(double* arr) {                        ///Переопределение виртуальной функции
-    V = (num_PI * arr[0] * arr[0] * arr[0] * 4) / 3;  ///для производного класса Ball
-    return V;                                         ///которая вычисляет Объем шара
+  static Shape* createShape(short int ch){
+    switch (ch){
+      case 1:
+        return new Triangle();
+        break;
+      case 2:
+        return new Trapeze();
+        break;
+      default: return nullptr;
+    }
   }
-  double S_find(double* arr) {                        ///Переопределение виртуальной функции
-    S = 4 * num_PI * arr[0] * arr[0];                 ///для производного класса Ball
-    return S;                                         ///которая вычисляет площадь шара
+};
+
+class Operation:public Shape{
+ public:
+  static Shape* Compare(Shape* first, Shape* second){
+    float first_S, second_S;
+    if(first->ID == "Triangle"){
+      float a,b,c,p;
+      a = sqrt(pow(first->arc[0].x - first->arc[1].x,2) + pow(first->arc[0].y - first->arc[1].y,2));
+      b = sqrt(pow(first->arc[1].x - first->arc[2].x,2) + pow(first->arc[1].y - first->arc[2].y,2));
+      c = sqrt(pow(first->arc[2].x - first->arc[0].x,2) + pow(first->arc[2].y - first->arc[0].y,2));
+      p = (a + b + c)/2;
+
+      first_S = sqrt(p * (p - a) * (p - b) * (p - c));
+    }
+    else if(first->ID == "Trapeze"){
+      float a,b,c,d;
+      a = sqrt(pow(first->arc[0].x - first->arc[1].x,2) + pow(first->arc[0].y - first->arc[1].y,2));
+      b = sqrt(pow(first->arc[1].x - first->arc[2].x,2) + pow(first->arc[1].y - first->arc[2].y,2));
+      c = sqrt(pow(first->arc[2].x - first->arc[3].x,2) + pow(first->arc[2].y - first->arc[3].y,2));
+      d = sqrt(pow(first->arc[3].x - first->arc[0].x,2) + pow(first->arc[3].y - first->arc[0].y,2));
+
+      first_S = (((a+b)/2) * sqrt(pow(c,2) - pow((pow(b-a,2) + pow(c,2) - pow(d,2))/(2 * (b - a)),2)));
+      //cout << first_S << endl;
+    }
+
+
+    if(second->ID == "Triangle"){
+      float a,b,c,p;
+      a = sqrt(pow(second->arc[0].x - second->arc[1].x,2) + pow(second->arc[0].y - second->arc[1].y,2));
+      b = sqrt(pow(second->arc[1].x - second->arc[2].x,2) + pow(second->arc[1].y - second->arc[2].y,2));
+      c = sqrt(pow(second->arc[2].x - second->arc[0].x,2) + pow(second->arc[2].y - second->arc[0].y,2));
+      p = (a + b + c)/2;
+
+      second_S = sqrt(p * (p - a) * (p - b) * (p - c));
+    }
+    else if(second->ID == "Trapeze"){
+      float a,b,c,d;
+      a = sqrt(pow(second->arc[0].x - second->arc[1].x,2) + pow(second->arc[0].y - second->arc[1].y,2));
+      b = sqrt(pow(second->arc[1].x - second->arc[2].x,2) + pow(second->arc[1].y - second->arc[2].y,2));
+      c = sqrt(pow(second->arc[2].x - second->arc[3].x,2) + pow(second->arc[2].y - second->arc[3].y,2));
+      d = sqrt(pow(second->arc[3].x - second->arc[0].x,2) + pow(second->arc[3].y - second->arc[0].y,2));
+
+      second_S = (((a+b)/2) * sqrt(pow(c,2) - pow((pow(b-a,2) + pow(c,2) - pow(d,2))/(2 * (b - a)),2)));
+    }
+
+    if(first_S > second_S){
+      return first;
+    }
+    else{
+      return second;
+    }
   }
-  ~Ball(){};
+  /*bool isInclude(Shape* first, Shape* second){
+    return true;
+  }*/
 };
 
 int main() {
-  setlocale(LC_ALL, "rus");
-  Body* list[3];
-  //Cone* conus = new Cone;
-  //Ball* shar = new Ball;
-  Parallelepiped* pram = new Parallelepiped;
-  list[0] = pram;
-  list[1] = new Cone;
-  list[2] = new Ball;
-  //list[1] = conus;
-  //list[2] = shar;
+  system("chcp 65001");
   bool chek = true;
 
   while (chek) {
     cout << "=================================================================" << endl;
-    cout << "Выберите фигуру, для которой необходимо выполнить вычисления:" << endl;
-    cout << "1) Прямоугольный параллелипипед" << endl;
-    cout << "2) Конус" << endl;
-    cout << "3) Шар" << endl;
+    cout << "Выберите опцию:" << endl;
+    cout << "1) Сравнить объекты по площади" << endl;
+    cout << "2) Определить факт пересечения" << endl;
+    cout << "3) Определить факт включения одного объекта в другой" << endl;
     short int choice;
     cin >> choice;
     cout << "=================================================================" << endl;
-    double arr[3]{};
-    double V = 0, S = 0;
-    short int math = 0;
-    switch (choice) {
+
+
+    switch (choice){
       case 1:
-        while(math != 1 && math != 2) {
-          cout << "Для вычисления объёма фигуры введите 1, для вычиселния площади введите 2: " << endl;
-          cin >> math;
-          switch (math){
-            case 1:
-              cout << "Введите значения длины параллелипипеда: ";
-              cin >> arr[0];
-              cout << "Введите значения Ширины параллелипипеда: ";
-              cin >> arr[1];
-              cout << "Введите значения Высоты параллелипипеда: ";
-              cin >> arr[2];
-
-              V = list[0]->V_find(arr);
-
-              cout << "Объём фигуры равен = " << V << endl;
-              break;
-            case 2:
-              cout << "Введите значения длины параллелипипеда: ";
-              cin >> arr[0];
-              cout << "Введите значения Ширины параллелипипеда: ";
-              cin >> arr[1];
-              cout << "Введите значения Высоты параллелипипеда: ";
-              cin >> arr[2];
-
-              S = list[0]->S_find(arr);
-
-              cout << "Площадь фигуры равна = " << S << endl;
-              break;
-            default:
-              cout << "Неизвестная команда!" << endl;
-              break;
-          }
-        }
+        Shape* s1 = nullptr;
+        Shape* s2 = nullptr;
+        cout << "Для выполнения данной опции необходимо создать два объекта!" << endl;
+        cout << "=================================================================" << endl;
+        cout << "Выберите фигуру, которую необходимо создать:" << endl;
+        cout << "1) Треугольник" << endl;
+        cout << "2) Трапеция" << endl;
+        short int ch;
+        cin >> ch;
+        cout << "=================================================================" << endl;
+        s1 = Factory::createShape(ch);
         break;
       case 2:
-        while(math != 1 && math != 2) {
-          cout << "Для вычисления объёма фигуры введите 1, для вычиселния площади введите 2: " << endl;
-          cin >> math;
-          switch (math){
-            case 1:
-              cout << "Введите значения Радиуса основания: ";
-              cin >> arr[0];
-              cout << "Введите значения Высоты конуса: ";
-              cin >> arr[1];
 
-              V = list[1]->V_find(arr);
-              cout << "Объём фигуры равен = " << V << endl;
-              break;
-            case 2:
-              cout << "Введите значения Радиуса основания: ";
-              cin >> arr[0];
-              cout << "Введите значения Длины образующей конуса: ";
-              cin >> arr[1];
-
-              S = list[1]->S_find(arr);
-              cout << "Площадь фигуры равна = " << S << endl;
-              break;
-            default:
-              cout << "Неизвестная команда!" << endl;
-              break;
-          }
-        }
         break;
       case 3:
-        while(math != 1 && math != 2) {
-          cout << "Для вычисления объёма фигуры введите 1, для вычиселния площади введите 2: " << endl;
-          cin >> math;
-          switch (math){
-            case 1:
-              cout << "Введите значения Радиуса: ";
-              cin >> arr[0];
-
-              V = list[2]->V_find(arr);
-              cout << "Объём фигуры равен = " << V << endl;
-              break;
-            case 2:
-              cout << "Введите значения Радиуса: ";
-              cin >> arr[0];
-
-              S = list[2]->S_find(arr);
-              cout << "Площадь фигуры равна = " << S << endl;
-              break;
-            default:
-              cout << "Неизвестная команда!" << endl;
-              break;
-          }
-        }
         break;
       default:
-        cout << "Неизвестная команда!" << endl;
+        cout << "Ошибка: Неизвестная опция!" << endl;
         break;
     }
+
+
+
+    /*cout << "=================================================================" << endl;
+    cout << "Выберите фигуру, которую необходимо создать:" << endl;
+    cout << "1) Треугольник" << endl;
+    cout << "2) Трапеция" << endl;
+    short int choice;
+    cin >> choice;
+    cout << "=================================================================" << endl;
+    s1 = Factory::createShape(choice);
+    if(s1){
+      //cout << s1->ID << endl;
+      cout << Operation::Compare(s1,s1)->ID;
+    }
+    else{
+      cout << "Невозможно создать такую фигуру" << endl;
+    }*/
+    if(s1) delete s1;
     string str;
     bool flg = true;
     do {
@@ -211,8 +189,6 @@ int main() {
       }
     } while (flg);
   }
-  delete pram;
-  delete list[1];
-  delete list[2];
+
   return 0;
 }
