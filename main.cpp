@@ -20,6 +20,14 @@ class Triangle:public Shape{
  public:
   Triangle(){
     arc = new Point[3];
+    cout << "Введите координаты точек начиная с левого-нижнего угла против часовой стрелки" << endl;
+    for (int i = 0; i < 3; ++i) {
+      cout << "Введите координаты " << i+1 << " точки: ";
+      cout << "x = ";
+      cin >> arc[i].x;
+      cout << "y = ";
+      cin >> arc[i].y;
+    }
     ID = "Triangle";
   }
   ~Triangle(){delete[] arc;}
@@ -59,7 +67,7 @@ class Factory{
 
 class Operation:public Shape{
  public:
-  static Shape* Compare(Shape* first, Shape* second){
+  static long Compare(Shape* first, Shape* second){
     float first_S, second_S;
     if(first->ID == "Triangle"){
       float a,b,c,p;
@@ -102,19 +110,17 @@ class Operation:public Shape{
     }
 
     if(first_S > second_S){
-      return first;
+      return 1;
     }
     else{
-      return second;
+      return 2;
     }
   }
-  /*bool isInclude(Shape* first, Shape* second){
-    return true;
-  }*/
 };
 
 int main() {
   system("chcp 65001");
+  setlocale(LC_ALL,"RUS");
   bool chek = true;
 
   while (chek) {
@@ -129,9 +135,9 @@ int main() {
 
 
     switch (choice){
-      case 1:
-        Shape* s1 = nullptr;
-        Shape* s2 = nullptr;
+      case 1: {
+        Shape *s1 = nullptr;
+        Shape *s2 = nullptr;
         cout << "Для выполнения данной опции необходимо создать два объекта!" << endl;
         cout << "=================================================================" << endl;
         cout << "Выберите фигуру, которую необходимо создать:" << endl;
@@ -141,12 +147,34 @@ int main() {
         cin >> ch;
         cout << "=================================================================" << endl;
         s1 = Factory::createShape(ch);
-        break;
-      case 2:
+        cout << "=================================================================" << endl;
+        cout << "Выберите фигуру, которую необходимо создать:" << endl;
+        cout << "1) Треугольник" << endl;
+        cout << "2) Трапеция" << endl;
+        cin >> ch;
+        cout << "=================================================================" << endl;
+        s2 = Factory::createShape(ch);
+
+
+
+        long d = Operation::Compare(s1,s2);
+        if(d == 1){
+          cout << "Фигура - " << s1->ID << " Больше чем - " << s2->ID << endl;
+        }
+        else{
+          cout << "Фигура - " << s2->ID << " Больше чем - " << s1->ID << endl;
+        }
 
         break;
-      case 3:
+      }
+      case 2: {
+        cout << 2 << endl;
         break;
+      }
+      case 3: {
+        cout << 2 << endl;
+        break;
+      }
       default:
         cout << "Ошибка: Неизвестная опция!" << endl;
         break;
@@ -169,7 +197,9 @@ int main() {
     else{
       cout << "Невозможно создать такую фигуру" << endl;
     }*/
-    if(s1) delete s1;
+
+
+
     string str;
     bool flg = true;
     do {
