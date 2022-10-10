@@ -116,6 +116,47 @@ class Operation:public Shape{
       return 2;
     }
   }
+
+  static bool isIntersect(Shape* first, Shape* second){
+
+    // ax + by = e
+    // cx + dy = f
+
+
+    // double det = a * d - b * c;
+
+    // double x = (e * d - b * f) / det;
+    // double y = (a * f - e * c) / det;
+
+    //-----------------------------------------------------------------
+
+    // k * x1 + b = y1;
+    // k * x2 + b = y2;
+
+    // k*3 + b = 2,
+    // k*(-1) + b = -1.
+
+    //double det = x1 - x2;
+
+    //double k = (y1 - y2) / det
+    //double b = (x1 * y2 - y1 * x2) / det
+
+
+
+
+    double kx = first->arc[1].y - first->arc[0].y;
+    double kx = first->arc[0].x - first->arc[1].x;
+
+
+
+
+
+
+  }
+
+  static bool isInclude(Shape* first, Shape* second){
+
+  }
 };
 
 int main() {
