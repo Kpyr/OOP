@@ -8,9 +8,8 @@ class Point{
   float x=0, y=0;
 };
 class Shape{
- protected:
-
  public:
+  double S;
   Point* arc = 0;
   string ID="";
   virtual ~Shape(){};
@@ -112,46 +111,80 @@ class Operation:public Shape{
     if(first_S > second_S){
       return 1;
     }
-    else{
+    else if(first_S == second_S){
       return 2;
+    }
+    else{
+      return 3;
     }
   }
 
-  static bool isIntersect(Shape* first, Shape* second){
+  static long isIntersect(Shape* first, Shape* second){
+    double first_havyX,first_havyY,second_havyX,second_havyY;
+    double first_R, second_R;
+    double tmp1,tmp2,tmp3,tmp4;
 
-    // ax + by = e
-    // cx + dy = f
+    if(first->ID == "Triangle"){
+      first_havyX = (first->arc[0].x + first->arc[1].x + first->arc[2].x) / 3;
+      first_havyY = (first->arc[0].y + first->arc[1].y + first->arc[2].y) / 3;
 
-
-    // double det = a * d - b * c;
-
-    // double x = (e * d - b * f) / det;
-    // double y = (a * f - e * c) / det;
-
-    //-----------------------------------------------------------------
-
-    // k * x1 + b = y1;
-    // k * x2 + b = y2;
-
-    // k*3 + b = 2,
-    // k*(-1) + b = -1.
-
-    //double det = x1 - x2;
-
-    //double k = (y1 - y2) / det
-    //double b = (x1 * y2 - y1 * x2) / det
+      tmp1 = sqrt(pow(first_havyX - first->arc[0].x,2) + pow(first_havyY - first->arc[0].y,2));
+      tmp2 = sqrt(pow(first_havyX - first->arc[1].x,2) + pow(first_havyY - first->arc[1].y,2));
+      tmp3 = sqrt(pow(first_havyX - first->arc[2].x,2) + pow(first_havyY - first->arc[2].y,2));
 
 
+      first_R = max(tmp1,max(tmp2,tmp3));
+    }
+    else if(first->ID == "Trapeze"){
+      first_havyX = (first->arc[0].x + first->arc[1].x + first->arc[2].x + first->arc[3].x) / 4;
+      first_havyY = (first->arc[0].y + first->arc[1].y + first->arc[2].y + first->arc[3].y) / 4;
 
 
-    double kx = first->arc[1].y - first->arc[0].y;
-    double kx = first->arc[0].x - first->arc[1].x;
+      tmp1 = sqrt(pow(first_havyX - first->arc[0].x,2) + pow(first_havyY - first->arc[0].y,2));
+      tmp2 = sqrt(pow(first_havyX - first->arc[1].x,2) + pow(first_havyY - first->arc[1].y,2));
+      tmp3 = sqrt(pow(first_havyX - first->arc[2].x,2) + pow(first_havyY - first->arc[2].y,2));
+      tmp4 = sqrt(pow(first_havyX - first->arc[3].x,2) + pow(first_havyY - first->arc[3].y,2));
 
 
+      first_R = max(tmp1,max(tmp2,max(tmp3,tmp4)));
+    }
+
+    if(second->ID == "Triangle"){
+      second_havyX = (second->arc[0].x + second->arc[1].x + second->arc[2].x) / 3;
+      second_havyY = (second->arc[0].y + second->arc[1].y + second->arc[2].y) / 3;
+
+      tmp1 = sqrt(pow(second_havyX - second->arc[0].x,2) + pow(second_havyY - second->arc[0].y,2));
+      tmp2 = sqrt(pow(second_havyX - second->arc[1].x,2) + pow(second_havyY - second->arc[1].y,2));
+      tmp3 = sqrt(pow(second_havyX - second->arc[2].x,2) + pow(second_havyY - second->arc[2].y,2));
 
 
+      second_R = max(tmp1,max(tmp2,tmp3));
+    }
+    else if(second->ID == "Trapeze"){
+      second_havyX = (second->arc[0].x + second->arc[1].x + second->arc[2].x + second->arc[3].x) / 4;
+      second_havyY = (second->arc[0].y + second->arc[1].y + second->arc[2].y + second->arc[3].y) / 4;
 
 
+      tmp1 = sqrt(pow(second_havyX - second->arc[0].x,2) + pow(second_havyY - second->arc[0].y,2));
+      tmp2 = sqrt(pow(second_havyX - second->arc[1].x,2) + pow(second_havyY - second->arc[1].y,2));
+      tmp3 = sqrt(pow(second_havyX - second->arc[2].x,2) + pow(second_havyY - second->arc[2].y,2));
+      tmp4 = sqrt(pow(second_havyX - second->arc[3].x,2) + pow(second_havyY - second->arc[3].y,2));
+
+
+      second_R = max(tmp1,max(tmp2,max(tmp3,tmp4)));
+    }
+
+    double len = sqrt(pow(first_havyX - second_havyX,2) + pow(first_havyY - second_havyY,2));
+
+    if(len > (first_R + second_R)){
+      return 1;
+    }
+    else if(len == (first_R + second_R)){
+      return 2;
+    }
+    else{
+      return 3;
+    }
   }
 
   static bool isInclude(Shape* first, Shape* second){
@@ -202,14 +235,53 @@ int main() {
         if(d == 1){
           cout << "Фигура - " << s1->ID << " Больше чем - " << s2->ID << endl;
         }
-        else{
+        else if(d == 2){
+          cout << "Фигуры равны" << endl;
+        }
+        else if(d == 3){
           cout << "Фигура - " << s2->ID << " Больше чем - " << s1->ID << endl;
         }
 
+        delete s1;
+        delete s2;
         break;
       }
       case 2: {
-        cout << 2 << endl;
+        Shape *s1 = nullptr;
+        Shape *s2 = nullptr;
+        cout << "Для выполнения данной опции необходимо создать два объекта!" << endl;
+        cout << "=================================================================" << endl;
+        cout << "Выберите фигуру, которую необходимо создать:" << endl;
+        cout << "1) Треугольник" << endl;
+        cout << "2) Трапеция" << endl;
+        short int ch;
+        cin >> ch;
+        cout << "=================================================================" << endl;
+        s1 = Factory::createShape(ch);
+        cout << "=================================================================" << endl;
+        cout << "Выберите фигуру, которую необходимо создать:" << endl;
+        cout << "1) Треугольник" << endl;
+        cout << "2) Трапеция" << endl;
+        cin >> ch;
+        cout << "=================================================================" << endl;
+        s2 = Factory::createShape(ch);
+
+
+        long d = Operation::isIntersect(s1,s2);
+        if(d == 1){
+          cout << "Фигуры не пересекаются!" << endl;
+        }
+        else if(d == 2){
+          cout << "Фигуры касаются!" << endl;
+        }
+        else if(d == 3){
+          cout << "Фигуры пересекаются!" << endl;
+        }
+
+
+
+        delete s1;
+        delete s2;
         break;
       }
       case 3: {
@@ -222,22 +294,6 @@ int main() {
     }
 
 
-
-    /*cout << "=================================================================" << endl;
-    cout << "Выберите фигуру, которую необходимо создать:" << endl;
-    cout << "1) Треугольник" << endl;
-    cout << "2) Трапеция" << endl;
-    short int choice;
-    cin >> choice;
-    cout << "=================================================================" << endl;
-    s1 = Factory::createShape(choice);
-    if(s1){
-      //cout << s1->ID << endl;
-      cout << Operation::Compare(s1,s1)->ID;
-    }
-    else{
-      cout << "Невозможно создать такую фигуру" << endl;
-    }*/
 
 
 
