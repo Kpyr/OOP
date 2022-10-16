@@ -172,8 +172,72 @@ class Operation:public Shape {
     }
   }
   static long isInclude(Shape* first, Shape* second){
+    /*if(isIntersect(first,second) == 2 || isIntersect(first,second) == 3){
+      return 1;
+    }
+    else{*/
+      double first_havyX, first_havyY, second_havyX, second_havyY;
+      double first_R, second_R;
+      double tmp1, tmp2, tmp3, tmp4;
 
-  }
+      if (first->ID == "Triangle") {
+        first_havyX = (first->arc[0].x + first->arc[1].x + first->arc[2].x) / 3;
+        first_havyY = (first->arc[0].y + first->arc[1].y + first->arc[2].y) / 3;
+
+        tmp1 = sqrt(pow(first_havyX - first->arc[0].x, 2) + pow(first_havyY - first->arc[0].y, 2));
+        tmp2 = sqrt(pow(first_havyX - first->arc[1].x, 2) + pow(first_havyY - first->arc[1].y, 2));
+        tmp3 = sqrt(pow(first_havyX - first->arc[2].x, 2) + pow(first_havyY - first->arc[2].y, 2));
+
+        first_R = max(tmp1, max(tmp2, tmp3));
+      } else if (first->ID == "Trapeze") {
+        first_havyX = (first->arc[0].x + first->arc[1].x + first->arc[2].x + first->arc[3].x) / 4;
+        first_havyY = (first->arc[0].y + first->arc[1].y + first->arc[2].y + first->arc[3].y) / 4;
+
+        tmp1 = sqrt(pow(first_havyX - first->arc[0].x, 2) + pow(first_havyY - first->arc[0].y, 2));
+        tmp2 = sqrt(pow(first_havyX - first->arc[1].x, 2) + pow(first_havyY - first->arc[1].y, 2));
+        tmp3 = sqrt(pow(first_havyX - first->arc[2].x, 2) + pow(first_havyY - first->arc[2].y, 2));
+        tmp4 = sqrt(pow(first_havyX - first->arc[3].x, 2) + pow(first_havyY - first->arc[3].y, 2));
+
+        first_R = max(tmp1, max(tmp2, max(tmp3, tmp4)));
+      }
+
+      if (second->ID == "Triangle") {
+        second_havyX = (second->arc[0].x + second->arc[1].x + second->arc[2].x) / 3;
+        second_havyY = (second->arc[0].y + second->arc[1].y + second->arc[2].y) / 3;
+
+        tmp1 = sqrt(pow(second_havyX - second->arc[0].x, 2) + pow(second_havyY - second->arc[0].y, 2));
+        tmp2 = sqrt(pow(second_havyX - second->arc[1].x, 2) + pow(second_havyY - second->arc[1].y, 2));
+        tmp3 = sqrt(pow(second_havyX - second->arc[2].x, 2) + pow(second_havyY - second->arc[2].y, 2));
+
+        second_R = max(tmp1, max(tmp2, tmp3));
+      } else if (second->ID == "Trapeze") {
+        second_havyX = (second->arc[0].x + second->arc[1].x + second->arc[2].x + second->arc[3].x) / 4;
+        second_havyY = (second->arc[0].y + second->arc[1].y + second->arc[2].y + second->arc[3].y) / 4;
+
+        tmp1 = sqrt(pow(second_havyX - second->arc[0].x, 2) + pow(second_havyY - second->arc[0].y, 2));
+        tmp2 = sqrt(pow(second_havyX - second->arc[1].x, 2) + pow(second_havyY - second->arc[1].y, 2));
+        tmp3 = sqrt(pow(second_havyX - second->arc[2].x, 2) + pow(second_havyY - second->arc[2].y, 2));
+        tmp4 = sqrt(pow(second_havyX - second->arc[3].x, 2) + pow(second_havyY - second->arc[3].y, 2));
+
+        second_R = max(tmp1, max(tmp2, max(tmp3, tmp4)));
+      }
+
+      double len = sqrt(pow(first_havyX - second_havyX, 2) + pow(first_havyY - second_havyY, 2));
+
+      if(len < abs(first_R - second_R)){
+        if(first_R > second_R){
+          return 2;
+        }
+        else{
+          return 3;
+        }
+      }
+      else{
+        return 1;
+      }
+
+    }
+ /* }*/
 };
 
 int main() {
@@ -291,16 +355,13 @@ int main() {
 
         long d = Operation::isInclude(s1,s2);
         if(d == 1){
-          cout << "Фигуры совпадают" << endl;
+          cout << "Включение отсутсвует" << endl;
         }
         else if(d == 2){
-          cout << "Первая фигура включена во вторую" << endl;
+          cout << "Вторая фигура включается в первую" << endl;
         }
         else if(d == 3){
-          cout << "Вторая фигура влючена в первую" << endl;
-        }
-        else if(d == 4){
-          cout << "Включение отсутсвует!" << endl;
+          cout << "Первая фигура включается во вторую" << endl;
         }
 
 
