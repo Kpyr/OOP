@@ -1,18 +1,9 @@
 ///Вариант 10
-/*Структура – Служащий. Структура должна включать соответствующие поля:
-ФИО, возраст, дата приема на работу, профессия, специальность.
-Простейшие функции:
-1)смена фамилии,
-2)вычисление полного стажа на момент введенной даты (годов, месяцев, дней),
-3)смена профессии и специальности,
-4)вывод данных по служащему.*/
+/*10.Классы рюкзак и учебники.
+ * Класс обработчик реализует формирование расписания предметов и заполнение рюкзака согласно этому расписанию. */
 
 
-#include "employee.h"
-#include "employee.cpp"
 
-#include "employeeClass.h"
-#include "employeeClass.cpp"
 
 //#include <vld.h>
 #include <stack>
@@ -21,90 +12,165 @@
 #include <Windows.h>
 #include <iostream>
 #include <cmath>
+#include<conio.h>
+#include <clocale>
+
 using namespace std;
-int main() {
+
+
+//******* Класс часть ***************************
+class Book{
+ private:
+  string name;
+ public:
+  Book(){};// Конструктор по умолчанию
+  Book(string str);
+  ~Book();// Деструктор
+  void Print();
+  void setName(string str){name = str;};
+  string GetName() {return name;};
+};
+Book::Book(string str){// Конструктор инициализатор
+  name = str;
+}
+void Book::Print(){// Метод вывода
+  cout << name;
+}
+Book::~Book(){ // Деструктор
+}
+
+
+
+class Backpack{
+ private:
+  Book **Array;
+  int bcount;
+ public:
+  Backpack(); // Конструктор по умолчанию
+  void printAll();
+  virtual ~Backpack(); // Деструктор класса
+  void AddBook(Book* TovarBuf);
+  void DelBook(int id);
+  void SetN(int n){ bcount=n; };
+  int GetN(){ return bcount; }
+  Book* GetMas(int i) {	return Array[i]; }
+  void SetMas(int i,Book *f){ Array[i]=f; }
+};
+Backpack::Backpack(){
+  bcount=0;
+  Array=NULL;
+};
+
+void Backpack::AddBook(Book* TovarBuf){
+  int j;
+  Book **TovarArray;
+  TovarArray = new Book*[this->GetN()+1];
+  for(j=0; j<this->GetN(); j++){
+    TovarArray[j] = this->GetMas(j);
+  }
+  TovarArray[j] =  TovarBuf;
+
+  delete[] Array;
+  Array = new Book*[this->GetN()+1];
+  this->SetN(this->GetN()+1);
+  for(j=0; j<this->GetN(); j++){
+    Array[j] = TovarArray[j];
+  }
+};
+
+void Backpack::DelBook(int id){
+  int i, j, k=0;
+  Book *TovarBuf;
+  TovarBuf = this->GetMas(id-1);
+  Book **TovarArray;
+  TovarArray = new Book*[this->GetN()-1];
+  for(j=0;j<this->GetN();j++){
+    if (j!=(id-1)){
+      TovarArray[k] = this->GetMas(j);
+      k++;
+    }
+  }
+  for(j=0;j<this->GetN()-1;j++){
+    Array[j] = TovarArray[j];
+  }
+  this->SetN(this->GetN()-1);
+  delete TovarBuf;
+};
+void Backpack::printAll(){
+  int i;
+  for(i=0; i<bcount; i++){
+    Array[i]->Print();
+    cout << endl;
+  }
+}
+Backpack::~Backpack(){
+  for(int i=0; i<bcount; i++)
+    delete Array[i];
+  delete[] Array;
+  printf(" Деструктор класса Торговый Зал\n");
+}
+
+
+class TProcessor{
+ private:
+  string *ms;
+  Backpack *BckP;
+  long cnt=0;
+ public:
+  TProcessor(Backpack *A);
+  void initBackpack(long day);
+  void SetTimetable(){
+    cout << "Введите количсетво уроков: ";
+    long tmp;
+    cin >> tmp;
+    cnt = tmp;
+    ms = new string [tmp];
+    for (int i = 0; i < tmp; ++i) {
+      cout << "Введите название предмета: ";
+      cin >> ms[i];
+    }
+  };
+  long Cnt(long day) {
+    long k = 0;
+    return k;
+  }
+  ~TProcessor();
+};
+
+void TProcessor::initBackpack(long day) {
+  if(day >= 1 && day <= 7){
+    for (int i = 0; i < cnt; ++i) {
+      BckP->AddBook(new Book(ms[i]));
+    }
+  }
+  else{
+    cout << "Несуществующий день недели!" << endl;
+  }
+}
+
+
+TProcessor::TProcessor(Backpack *A) {
+  BckP = A;
+};
+
+
+
+TProcessor::~TProcessor(){
+}
+
+int main(){
   system("chcp 65001");
+  /*setlocale(LC_ALL, "RUS");*/
 
 
+  Backpack *bk = new Backpack();
+  TProcessor *tp = new TProcessor(bk);
+  tp->SetTimetable();
 
-  //---------------------------------Struct module-----------------------------------------
+  tp->initBackpack(1);
+  bk->printAll();
 
-  long dateafter[3];
-  dateafter[0] = 1;
-  dateafter[1] = 1;
-  dateafter[2] = 2001;
-
-
-  employee* em1;
-  em1 = new employee;
-  em1->name = "Oleg";
-  em1->surname = "Borisenko";
-  em1->patronymic = "Olegovich";
-  em1->age = 34;
-  em1->expDay = 1;
-  em1->expMonth = 1;
-  em1->expYear = 2000;
-  em1->profession = "Clean";
-  em1->speciality = "Clean table";
-
-  showInfo(em1);
-
-  changeSurname(em1,"Glavenko");
-
-  showInfo(em1);
-
-  changeProfessionAndSpeciality(em1,"Boss", "Nothing");
-
-  showInfo(em1);
-
-  long *ms;
-  ms = calcExperience(em1, dateafter);
-  cout << "Стаж работы: " << endl;
-  cout << "Дней всего: " << ms[3] << endl;
-  cout << "Дней: " << ms[0] << endl << "Месяцов: " << ms[1] << endl << "Лет: " << ms[2] << endl;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  //---------------------------------Class module-----------------------------------------
-
-  /*long msDate[3];
-  msDate[0] = 1;
-  msDate[1] = 1;
-  msDate[2] = 2000;
-  employeeClass* emp1;
-  //emp1 = new employeeClass;
-  emp1 = new employeeClass("Oleg","Borisenko","Olegovich",34,msDate,"Clean","Clean table");
-
-
-
-  emp1->showInfo();
-  emp1->changeSurname("Brosky");
-  emp1->showInfo();
-  emp1->changeProfessionAndSpeciality("Boss", "Nothing");
-  emp1->showInfo();
-  long dateafter[3];
-  dateafter[0] = 1;
-  dateafter[1] = 1;
-  dateafter[2] = 2001;
-  long *ms;
-  ms = emp1->calcExperience(dateafter);
-  cout << "Стаж работы: " << endl;
-  cout << "Дней всего: " << ms[3] << endl;
-  cout << "Дней: " << ms[0] << endl << "Месяцов: " << ms[1] << endl << "Лет: " << ms[2] << endl;*/
 
   return 0;
 }
+
