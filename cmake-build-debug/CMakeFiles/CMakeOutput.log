@@ -50,24 +50,24 @@ The CXX compiler identification is MSVC, found in "D:/Clion_Projects/OOP/cmake-b
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: D:/Clion_Projects/OOP/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake -f Makefile /nologo cmTC_8e7c5\fast && 	"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\bin\HostX86\x86\nmake.exe"  -f CMakeFiles\cmTC_8e7c5.dir\build.make /nologo -L                  CMakeFiles\cmTC_8e7c5.dir\build
-Building C object CMakeFiles/cmTC_8e7c5.dir/CMakeCCompilerABI.c.obj
-	"C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_8e7c5.dir\CMakeCCompilerABI.c.obj.d --working-dir=D:\Clion_Projects\OOP\cmake-build-debug\CMakeFiles\CMakeTmp --filter-prefix="╧Ёшьхўрэшх: тъы■ўхэшх Їрщыр:  " -- C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1432~1.313\bin\Hostx86\x86\cl.exe @C:\Users\igrov\AppData\Local\Temp\nm1736.tmp
+Run Build Command(s):nmake -f Makefile /nologo cmTC_dcb96\fast && 	"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\bin\HostX86\x86\nmake.exe"  -f CMakeFiles\cmTC_dcb96.dir\build.make /nologo -L                  CMakeFiles\cmTC_dcb96.dir\build
+Building C object CMakeFiles/cmTC_dcb96.dir/CMakeCCompilerABI.c.obj
+	"C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_dcb96.dir\CMakeCCompilerABI.c.obj.d --working-dir=D:\Clion_Projects\OOP\cmake-build-debug\CMakeFiles\CMakeTmp --filter-prefix="╧Ёшьхўрэшх: тъы■ўхэшх Їрщыр:  " -- C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1432~1.313\bin\Hostx86\x86\cl.exe @C:\Users\igrov\AppData\Local\Temp\nmB476.tmp
 CMakeCCompilerABI.c
-Linking C executable cmTC_8e7c5.exe
-	"C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_8e7c5.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\mt.exe --manifests -- C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1432~1.313\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_8e7c5.dir\objects1.rsp @C:\Users\igrov\AppData\Local\Temp\nm17E3.tmp
+Linking C executable cmTC_dcb96.exe
+	"C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_dcb96.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\mt.exe --manifests -- C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1432~1.313\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_dcb96.dir\objects1.rsp @C:\Users\igrov\AppData\Local\Temp\nmB503.tmp
 
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: D:/Clion_Projects/OOP/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake -f Makefile /nologo cmTC_e29a9\fast && 	"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\bin\HostX86\x86\nmake.exe"  -f CMakeFiles\cmTC_e29a9.dir\build.make /nologo -L                  CMakeFiles\cmTC_e29a9.dir\build
-Building CXX object CMakeFiles/cmTC_e29a9.dir/CMakeCXXCompilerABI.cpp.obj
-	"C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_e29a9.dir\CMakeCXXCompilerABI.cpp.obj.d --working-dir=D:\Clion_Projects\OOP\cmake-build-debug\CMakeFiles\CMakeTmp --filter-prefix="╧Ёшьхўрэшх: тъы■ўхэшх Їрщыр:  " -- C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1432~1.313\bin\Hostx86\x86\cl.exe @C:\Users\igrov\AppData\Local\Temp\nm1AD0.tmp
+Run Build Command(s):nmake -f Makefile /nologo cmTC_5dcc5\fast && 	"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\bin\HostX86\x86\nmake.exe"  -f CMakeFiles\cmTC_5dcc5.dir\build.make /nologo -L                  CMakeFiles\cmTC_5dcc5.dir\build
+Building CXX object CMakeFiles/cmTC_5dcc5.dir/CMakeCXXCompilerABI.cpp.obj
+	"C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_5dcc5.dir\CMakeCXXCompilerABI.cpp.obj.d --working-dir=D:\Clion_Projects\OOP\cmake-build-debug\CMakeFiles\CMakeTmp --filter-prefix="╧Ёшьхўрэшх: тъы■ўхэшх Їрщыр:  " -- C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1432~1.313\bin\Hostx86\x86\cl.exe @C:\Users\igrov\AppData\Local\Temp\nmB800.tmp
 CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_e29a9.exe
-	"C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_e29a9.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\mt.exe --manifests -- C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1432~1.313\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_e29a9.dir\objects1.rsp @C:\Users\igrov\AppData\Local\Temp\nm1B7C.tmp
+Linking CXX executable cmTC_5dcc5.exe
+	"C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_5dcc5.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\mt.exe --manifests -- C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1432~1.313\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_5dcc5.dir\objects1.rsp @C:\Users\igrov\AppData\Local\Temp\nmB8AD.tmp
 
 
 
