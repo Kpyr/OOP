@@ -1,10 +1,14 @@
 //#include <vld.h>
 #include <iostream>
+#include <map>
+#include <algorithm>
 #include <vector>
 #include <cmath>
 #include <Windows.h>
 #include <string>
 using namespace std;
+
+long long value;
 
 class Notebook{
  private:
@@ -34,9 +38,10 @@ class Notebook{
   string getName() const {return name;}
   string getSecondName() const {return secondname;}
   string getThirdName() const {return thirdname;}
+  string getNumber() const { return number; }
 
   long getDay() const {return dd;}
-  long getMounth() const {return mm;}
+  long getMonth() const {return mm;}
   long getYear() const {return yy;}
 
   long long getFullDate() const {return fulldate;}
@@ -44,17 +49,63 @@ class Notebook{
   ~Notebook(){};
 };
 
-long long value;
 struct foName {
   bool operator()(Notebook* a) {
-    return (a->getFullDate() == value); }
+    return (a->getFullDate() == value);
+  }
 };
+
+class mapCon {
+ private:
+  multimap <int, Notebook*> mapList;
+ public:
+
+};
+
+class vectorCon {
+ private:
+  vector <Notebook*> vecList;
+ public:
+  void enter(long long id, string s1, string s2, string s3, string num, long ddd, long mmm, long yyy) {
+    vecList.push_back(new Notebook(id, s1, s2, s3, num, ddd, mmm, yyy));
+  }
+
+  void show_vector(long long ind) {
+    /*  cout << "Индекс: " << ind << endl;
+      cout << "Фамилия: " << vecList[ind]->getSecondName() << endl;
+      cout << "Имя: " << vecList[ind]->getName() << endl;
+      cout << "Отчество: " << vecList[ind]->getThirdName() << endl;
+      cout << "Телефон: " << vecList[ind]->getNumber() << endl;
+      cout << "Дата: " << vecList[ind]->getDay() << "." << vecList[ind]->getMonth() << "." << vecList[ind]->getYear() << endl;
+      cout << string(40, '=') << endl;*/
+    vecList[ind]->showAll;
+  }
+
+  vector <Notebook*> search(long long fDate) {
+    vector <Notebook*> temp;
+    value = fDate;
+    auto it = vecList.begin();
+    while (it != vecList.end()) {
+      it = find_if(it, vecList.end(), foName());
+      if (it != vecList.end()) {
+        temp.push_back(*it);
+        it++;
+      }
+      else break;
+    }
+    return temp;
+  }
+};
+
 
 int main() {
   system("chcp 65001");
   long local_index = 0;
+  multimap <int, Notebook> mapN;
   vector<Notebook*> vec;
   vector<Notebook*> vecP;
+
+
   bool fl = true;
   while(fl){
 

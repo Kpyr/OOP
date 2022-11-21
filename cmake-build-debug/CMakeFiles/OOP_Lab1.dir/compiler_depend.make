@@ -104,6 +104,10 @@ CMakeFiles\OOP_Lab1.dir\main.cpp.obj: "C:\Program Files\Microsoft Visual Studio\
 CMakeFiles\OOP_Lab1.dir\main.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt\ctype.h"
 CMakeFiles\OOP_Lab1.dir\main.cpp.obj: "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\clocale"
 CMakeFiles\OOP_Lab1.dir\main.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt\locale.h"
+CMakeFiles\OOP_Lab1.dir\main.cpp.obj: "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\map"
+CMakeFiles\OOP_Lab1.dir\main.cpp.obj: "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\tuple"
+CMakeFiles\OOP_Lab1.dir\main.cpp.obj: "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\xtree"
+CMakeFiles\OOP_Lab1.dir\main.cpp.obj: "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\algorithm"
 CMakeFiles\OOP_Lab1.dir\main.cpp.obj: "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\vector"
 CMakeFiles\OOP_Lab1.dir\main.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um\Windows.h"
 CMakeFiles\OOP_Lab1.dir\main.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared\winapifamily.h"
@@ -361,6 +365,8 @@ CMakeFiles\OOP_Lab1.dir\main.cpp.obj: "C:\Program Files\Microsoft Visual Studio\
 
 "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\istream":
 
+"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\algorithm":
+
 "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\ostream":
 
 "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\cstdlib":
@@ -412,6 +418,8 @@ CMakeFiles\OOP_Lab1.dir\main.cpp.obj: "C:\Program Files\Microsoft Visual Studio\
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt\stdlib.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um\minwinbase.h":
+
+"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\tuple":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt\stdio.h":
 
@@ -588,6 +596,10 @@ CMakeFiles\OOP_Lab1.dir\main.cpp.obj: "C:\Program Files\Microsoft Visual Studio\
 "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\clocale":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt\locale.h":
+
+"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\map":
+
+"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\xtree":
 
 "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\vector":
 
